@@ -67,3 +67,7 @@ func (d *Driver) Create() error {
 	return nil
 }
 
+func (d *Driver) GetDockerConfigDir() string {
+	return dockerConfigDir
+}
+
