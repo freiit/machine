@@ -83,6 +83,14 @@ func (d *Driver) GetState() (state.State, error) {
 	return state.None, nil
 }
 
+////////////////
+// Kill
+///////////////
+
+func (d *Driver) Kill() error {
+	return nil
+}
+
 func (d *Driver) GetURL() (string, error) {
 	ip, err := d.GetIP()
 	if err != nil {
