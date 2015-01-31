@@ -83,6 +83,7 @@ func (d *Driver) GetIP() (string, error) {
 	return d.IPAddress, nil
 }
 
+
 func (d *Driver) GetDockerConfigDir() string {
 	return dockerConfigDir
 }
