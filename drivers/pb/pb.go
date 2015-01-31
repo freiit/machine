@@ -132,6 +132,14 @@ func (d *Driver) StartDocker() error {
 	return nil
 }
 
+///////////////
+// Stop
+//////////////
+
+func (d *Driver) Stop() error {
+	return nil
+}
+
 func (d *Driver) GetURL() (string, error) {
 	ip, err := d.GetIP()
 	if err != nil {
