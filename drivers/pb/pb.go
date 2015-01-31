@@ -1,7 +1,7 @@
 package pb
 
 import (
-	"fmt"
+	_ "fmt"
 
 	log "github.com/Sirupsen/logrus"
 	"github.com/codegangsta/cli"
@@ -13,8 +13,13 @@ const (
 )
 
 type Driver struct {
-	Userid		string
-	Password	int
+	Userid		   string
+	Password	   int
+	MachineName    string
+	CaCertPath     string
+	PrivateKeyPath string
+	DriverKeyPath  string
+	storePath      string
 }
 
 func init() {
