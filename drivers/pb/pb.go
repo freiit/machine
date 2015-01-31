@@ -107,6 +107,13 @@ func (d *Driver) Restart() error {
 	return nil
 }
 
+/////////////
+// Start
+/////////////
+func (d *Driver) Start() error {
+	return nil
+}
+
 func (d *Driver) GetURL() (string, error) {
 	ip, err := d.GetIP()
 	if err != nil {
