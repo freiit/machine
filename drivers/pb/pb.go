@@ -91,6 +91,14 @@ func (d *Driver) Kill() error {
 	return nil
 }
 
+///////////////
+// Remove
+//////////////
+
+func (d *Driver) Remove() error {
+	return nil
+}
+
 func (d *Driver) GetURL() (string, error) {
 	ip, err := d.GetIP()
 	if err != nil {
