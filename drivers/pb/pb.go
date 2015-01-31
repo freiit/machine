@@ -14,7 +14,7 @@ const (
 
 type Driver struct {
 	Userid		   string
-	Password	   int
+	Password	   string
 	MachineName    string
 	CaCertPath     string
 	PrivateKeyPath string
