@@ -1,7 +1,7 @@
 package pb
 
 import (
-	_ "fmt"
+	"fmt"
 
 	log "github.com/Sirupsen/logrus"
 	"github.com/codegangsta/cli"
@@ -83,6 +83,14 @@ func (d *Driver) GetIP() (string, error) {
 	return d.IPAddress, nil
 }
 
+
+func (d *Driver) GetSSHCommand(args ...string) (*exec.Cmd, error) {
+	return ssh.GetSSHCommand(d.IPAddress, 22, "root", d.sshKeyPath(), args...), nil
+}
+
+func (d *Driver) sshKeyPath() string {
+	return filepath.Join(d.storePath, "id_rsa")
+}
 
 func (d *Driver) GetDockerConfigDir() string {
 	return dockerConfigDir
