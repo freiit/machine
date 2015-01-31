@@ -26,7 +26,7 @@ import (
 	_ "github.com/docker/machine/drivers/vmwarefusion"
 	_ "github.com/docker/machine/drivers/vmwarevcloudair"
 	_ "github.com/docker/machine/drivers/vmwarevsphere"
-	_ "github.com/freiit/machine/drivers/pb"
+	_ "github.com/docker/machine/drivers/pb"
 	"github.com/docker/machine/state"
 	"github.com/docker/machine/utils"
 )
