@@ -72,7 +72,7 @@ func (d *Driver) PreCreateCheck() error {
 //////////////
 
 func (d *Driver) Create() error {
-	log.Infof("Creating SSH key...")
+	log.Infof("Inside PB create")
 	return nil
 }
 
