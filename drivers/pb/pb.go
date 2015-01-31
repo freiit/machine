@@ -66,9 +66,20 @@ func (d *Driver) PreCreateCheck() error {
 	return nil
 }
 
+///////////////
+// CREATE
+//////////////
+
 func (d *Driver) Create() error {
 	log.Infof("Creating SSH key...")
 	return nil
+}
+
+////////////////
+// GET STATE
+///////////////
+func (d *Driver) GetState() (state.State, error) {
+	return state.None, nil
 }
 
 func (d *Driver) GetURL() (string, error) {
