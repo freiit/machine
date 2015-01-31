@@ -9,6 +9,7 @@ import (
 	"github.com/codegangsta/cli"
 	"github.com/docker/machine/drivers"
 	"github.com/docker/machine/ssh"
+	"github.com/docker/machine/state"
 )
 
 const (
