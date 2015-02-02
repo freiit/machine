@@ -75,6 +75,7 @@ func (d *Driver) PreCreateCheck() error {
 //////////////
 
 func (d *Driver) Create() error {
+	d.IPAddress = "127.0.0.1"
 	log.Debugf("1")
 	soapreq_str := `<soapenv:Envelope xmlns:soapenv=”http://schemas.xmlsoap.org/soap/envelope/” xmlns:ws=”http://ws.api.profitbricks.com/”>
 					<soapenv:Header>
