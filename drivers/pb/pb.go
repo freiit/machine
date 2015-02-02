@@ -4,6 +4,9 @@ import (
 	"fmt"
 	"os/exec"
 	"path/filepath"
+	"net/http"
+  	"bytes"
+  	"io/ioutil"
 
 	log "github.com/Sirupsen/logrus"
 	"github.com/codegangsta/cli"
@@ -72,7 +75,40 @@ func (d *Driver) PreCreateCheck() error {
 //////////////
 
 func (d *Driver) Create() error {
-	log.Infof("Inside PB create")
+	soapreq_str := `<soapenv:Envelope xmlns:soapenv=”http://schemas.xmlsoap.org/soap/envelope/” xmlns:ws=”http://ws.api.profitbricks.com/”>
+					<soapenv:Header>
+					</soapenv:Header>
+					<soapenv:Body>
+					</soapenv:Body>
+					<ws:getAllDataCenters>
+					<request>
+					</request>
+					</ws:getAllDataCenters>
+					</soapenv:Envelope>`
+	buf := []byte(soapreq_str)
+	body := bytes.NewBuffer(buf)
+	client := &http.Client{}
+    req, err := http.NewRequest("POST", "https://api.profitbricks.com/1.3", body)
+    if err != nil {
+    	log.Debugf("Error in creating http client")
+    	log.Debugf("%v", err)
+    	return err
+    }
+    req.SetBasicAuth(d.Userid, d.Password)
+    resp, err := client.Do(req)
+    if err != nil{
+        log.Debugf("Error in calling pb api")
+        log.Debugf("%v", err)
+    	return err
+    }
+    bodyText, err := ioutil.ReadAll(resp.Body)
+    if err != nil{
+        log.Debugf("Error in response")
+        log.Debugf("%v", err)
+    	return err
+    }
+    s := string(bodyText)
+    log.Debugf("%v", s)
 	return nil
 }
 
