@@ -1,7 +1,7 @@
 package pb
 
 import (
-	"fmt"
+	_ "fmt"
 	"os/exec"
 	"path/filepath"
 	"net/http"
