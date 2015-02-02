@@ -27,7 +27,7 @@ type Driver struct {
 	PrivateKeyPath string
 	DriverKeyPath  string
 	storePath      string
-	//IPAddress      string
+	IPAddress      string
 }
 
 func init() {
@@ -222,17 +222,18 @@ func (d *Driver) Upgrade() error {
 }
 
 func (d *Driver) GetURL() (string, error) {
-	ip, err := d.GetIP()
-	if err != nil {
-		return "", err
-	}
-	return fmt.Sprintf("tcp://%s:2376", ip), nil
+	return "", nil
+	// ip, err := d.GetIP()
+	// if err != nil {
+	// 	return "", err
+	// }
+	// return fmt.Sprintf("tcp://%s:2376", ip), nil
 }
 
 func (d *Driver) GetIP() (string, error) {
-	if d.IPAddress == "" {
-		return "", fmt.Errorf("IP address is not set")
-	}
+	// if d.IPAddress == "" {
+	// 	return "", fmt.Errorf("IP address is not set")
+	// }
 	return d.IPAddress, nil
 }
 
