@@ -75,6 +75,7 @@ func (d *Driver) PreCreateCheck() error {
 //////////////
 
 func (d *Driver) Create() error {
+	log.Debugf("1")
 	soapreq_str := `<soapenv:Envelope xmlns:soapenv=”http://schemas.xmlsoap.org/soap/envelope/” xmlns:ws=”http://ws.api.profitbricks.com/”>
 					<soapenv:Header>
 					</soapenv:Header>
@@ -86,6 +87,7 @@ func (d *Driver) Create() error {
 					</ws:getAllDataCenters>
 					</soapenv:Envelope>`
 	buf := []byte(soapreq_str)
+	log.Debugf("2")
 	body := bytes.NewBuffer(buf)
 	client := &http.Client{}
     req, err := http.NewRequest("POST", "https://api.profitbricks.com/1.3", body)
@@ -94,6 +96,7 @@ func (d *Driver) Create() error {
     	log.Debugf("%v", err)
     	return err
     }
+    log.Debugf("3")
     req.SetBasicAuth(d.Userid, d.Password)
     resp, err := client.Do(req)
     if err != nil{
@@ -101,14 +104,17 @@ func (d *Driver) Create() error {
         log.Debugf("%v", err)
     	return err
     }
+    log.Debugf("4")
     bodyText, err := ioutil.ReadAll(resp.Body)
     if err != nil{
         log.Debugf("Error in response")
         log.Debugf("%v", err)
     	return err
     }
+    log.Debugf("5")
     s := string(bodyText)
     log.Debugf("%v", s)
+    log.Debugf("6")
 	return nil
 }
 
