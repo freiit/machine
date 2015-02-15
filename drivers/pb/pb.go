@@ -219,22 +219,22 @@ func GetCreateFlags() []cli.Flag {
 		cli.StringFlag{
 			EnvVar: "PB_DCNAME",
 			Name: "pb-vdc-name",
-			Usage: "Profitbicks data centre name"
+			Usage: "Profitbicks data centre name",
 		},
 		cli.StringFlag{
 			EnvVar: "PB_STORAGE",
 			Name:   "pb-storagesizeGB",
-			Usage: "Profitbricks Virtual Server storage space size"
+			Usage: "Profitbricks Virtual Server storage space size",
 		},
 		cli.StringFlag{
 			EnvVar: "PB_CORES",
 			Name:   "pb-cores",
-			Usage: "Profitbricks Virtual Server compute cores"
+			Usage: "Profitbricks Virtual Server compute cores",
 		},
 		cli.StringFlag{
 			EnvVar: "PB_RAM",
 			Name:   "pb-ramGB",
-			Usage: "Profitbricks Virtual Server RAM size"
+			Usage: "Profitbricks Virtual Server RAM size",
 		},
 	}
 }
