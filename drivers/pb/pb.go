@@ -267,10 +267,10 @@ func (d *Driver) PreCreateCheck() error {
 
 func (d *Driver) Create() error {
 	//d.IPAddress = "127.0.0.1"
-	key, err := d.createSSHKey()
-	if err != nil {
-		return err
-	}
+	// key, err := d.createSSHKey()
+	// if err != nil {
+	// 	return err
+	// }
 	log.Infof("User ---- %v", d)
 	//Get vdc ID from name
 	log.Infof("%s", d.VDCName)
