@@ -10,7 +10,6 @@ import (
   	"encoding/xml"
   	"time"
   	"strconv"
-  	"os/exec"
 
 	log "github.com/Sirupsen/logrus"
 	"github.com/codegangsta/cli"
@@ -224,17 +223,17 @@ func GetCreateFlags() []cli.Flag {
 		},
 		cli.StringFlag{
 			EnvVar: "PB_STORAGE",
-			Name:   "pb-storagesizeGB"
+			Name:   "pb-storagesizeGB",
 			Usage: "Profitbricks Virtual Server storage space size"
 		},
 		cli.StringFlag{
 			EnvVar: "PB_CORES",
-			Name:   "pb-cores"
+			Name:   "pb-cores",
 			Usage: "Profitbricks Virtual Server compute cores"
 		},
 		cli.StringFlag{
 			EnvVar: "PB_RAM",
-			Name:   "pb-ramGB"
+			Name:   "pb-ramGB",
 			Usage: "Profitbricks Virtual Server RAM size"
 		},
 	}
