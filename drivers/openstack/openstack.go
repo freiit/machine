@@ -176,7 +176,7 @@ func GetCreateFlags() []cli.Flag {
 		// the BoolFlag default value is always false
 		cli.StringFlag{
 			Name:  "openstack-docker-install",
-			Usage: "Set if docker have to be installed on the machine",
+			Usage: "Openstack should install docker on the machine",
 			Value: "true",
 		},
 	}
@@ -410,7 +410,7 @@ func (d *Driver) Kill() error {
 func (d *Driver) Upgrade() error {
 	log.Debugf("Upgrading Docker")
 
-	cmd, err := d.GetSSHCommand("sudo apt-get update && apt-get install --upgrade lxc-docker")
+	cmd, err := d.GetSSHCommand("sudo apt-get update && sudo apt-get install --upgrade lxc-docker")
 	if err != nil {
 		return err
 

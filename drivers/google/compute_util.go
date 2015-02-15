@@ -149,6 +149,8 @@ func (c *ComputeUtil) createInstance(d *Driver) error {
 		instance.Disks[0].InitializeParams = &raw.AttachedDiskInitializeParams{
 			DiskName:    c.diskName(),
 			SourceImage: imageName,
+			// The maximum supported disk size is 1000GB, the cast should be fine.
+			DiskSizeGb: int64(d.DiskSize),
 		}
 	} else {
 		instance.Disks[0].Source = c.zoneURL + "/disks/" + c.instanceName + "-disk"
@@ -227,7 +229,7 @@ func (c *ComputeUtil) createInstance(d *Driver) error {
 func (c *ComputeUtil) updateDocker(d *Driver) error {
 	log.Debugf("Upgrading Docker")
 
-	cmd, err := d.GetSSHCommand("sudo apt-get update && apt-get install --upgrade lxc-docker")
+	cmd, err := d.GetSSHCommand("sudo apt-get update && sudo apt-get install --upgrade lxc-docker")
 	if err != nil {
 		return err
 

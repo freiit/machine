@@ -129,6 +129,7 @@ Options:
 
  - `--google-zone`: The zone to launch the instance.  Default: `us-central1-a`
  - `--google-machine-type`: The type of instance.  Default: `f1-micro`
+ - `--google-disk-size`: The disk size of the instance (in GB).  Default: `10`
  - `--google-username`: The username to use for the instance.  Default: `docker-user`
  - `--google-instance-name`: The name of the instance.  Default: `docker-machine`
  - `--google-project`: The name of your project to use when launching the instance.
@@ -281,9 +282,17 @@ Options:
 
 ### Hyper-V
 
-Creates a Boot2Docker virtual machine locally on your Windows machine using Hyper-V. [See here](http://windows.microsoft.com/en-us/windows-8/hyper-v-run-virtual-machines) for instructions to enable Hyper-V.
+Creates a Boot2Docker virtual machine locally on your Windows machine
+using Hyper-V.  [See here](http://windows.microsoft.com/en-us/windows-8/hyper-v-run-virtual-machines)
+for instructions to enable Hyper-V. You will need to use an
+Administrator level account to create and manage Hyper-V machines.
 
-Note: you will need an existing virtual switch to use the driver.
+> **Note**: You will need an existing virtual switch to use the
+> driver.  Hyper-V can share an external network interface (aka
+> bridging), see [this blog](http://blogs.technet.com/b/canitpro/archive/2014/03/11/step-by-step-enabling-hyper-v-for-use-on-windows-8-1.aspx).
+> If you would like to use NAT, create an internal network, and use
+> [Internet Connection
+> Sharing](http://www.packet6.com/allowing-windows-8-1-hyper-v-vm-to-work-with-wifi/).
 
 Options:
 
