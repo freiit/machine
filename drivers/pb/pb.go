@@ -417,7 +417,7 @@ func (d *Driver) Create() error {
 		if err != nil {
 			log.Infof("error: %v", err)
 			log.Infof("Return XML  - %s", s)
-			return
+			return err
 		}
 		log.Infof("%s", v2.RespBody.GetServerResponse.Ret.VirtualMachineState)
 		if v2.RespBody.GetServerResponse.Ret.VirtualMachineState == "RUNNING"{
@@ -593,3 +593,6 @@ func (d *Driver) GetDockerConfigDir() string {
 	return dockerConfigDir
 }
 
+func (d *Driver) publicSSHKeyPath() string {
+	return d.sshKeyPath() + ".pub"
+}
