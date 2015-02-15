@@ -1,7 +1,7 @@
 package pb
 
 import (
-	_ "fmt"
+	"fmt"
 	"os/exec"
 	"path/filepath"
 	"net/http"
@@ -173,21 +173,21 @@ func makeReq(reqStr string, userid string, pass string) string{
 	client := &http.Client{}
     req, err := http.NewRequest("POST", "https://api.profitbricks.com/1.3", body)
     if err != nil {
-    	fmt.Printf("Error in creating http client")
-    	fmt.Printf("%v", err)
+    	log.Errorf("Error in creating http client")
+    	log.Errorf("%v", err)
     	return ""
     }
     req.SetBasicAuth(userid, pass)
     resp, err := client.Do(req)
     if err != nil{
-        fmt.Printf("Error in calling pb api")
-        fmt.Printf("%v", err)
+        log.Errorf("Error in calling pb api")
+        log.Errorf("%v", err)
     	return ""
     }
     bodyText, err := ioutil.ReadAll(resp.Body)
     if err != nil{
-        fmt.Printf("Error in response")
-        fmt.Printf("%v", err)
+        log.Errorf("Error in response")
+        log.Errorf("%v", err)
     	return ""
     }
     s := string(bodyText)
@@ -293,7 +293,7 @@ func (d *Driver) Create() error {
 	}
 	//fmt.Printf("%s", s)
 	v3 := VDCResponse{}
-    err := xml.Unmarshal([]byte(s), &v3)
+    err = xml.Unmarshal([]byte(s), &v3)
 	if err != nil {
 		log.Infof("error: %v", err)
 		log.Infof("Return XML  - %s", s)
@@ -421,7 +421,7 @@ func (d *Driver) Create() error {
 		}
 		log.Infof("%s", v2.RespBody.GetServerResponse.Ret.VirtualMachineState)
 		if v2.RespBody.GetServerResponse.Ret.VirtualMachineState == "RUNNING"{
-			d.IPAddress := v2.RespBody.GetServerResponse.Ret.Ips
+			d.IPAddress = v2.RespBody.GetServerResponse.Ret.Ips
 			break
 		}
 		i = i + 1
@@ -438,7 +438,7 @@ func (d *Driver) Create() error {
 	cmd := exec.Command("docker", "run", IPCommand, Passcommand, DockerImage)
 	var out bytes.Buffer
 	cmd.Stdout = &out
-	err := cmd.Run()
+	err = cmd.Run()
 	if err != nil {
 		log.Infof("Error running docker command")
 		log.Errorf("%v", err)
