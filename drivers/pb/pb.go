@@ -271,7 +271,7 @@ func (d *Driver) Create() error {
 	if err != nil {
 		return err
 	}
-
+	log.Infof("UserID ---- %s", d.Userid)
 	//Get vdc ID from name
 	log.Infof("%s", d.VDCName)
 	log.Debugf("%+v", key)	
