@@ -23,7 +23,7 @@ const (
 )
 
 type Driver struct {
-	Userid		   string
+	User     	   string
 	Password	   string
 	MachineName    string
 	CaCertPath     string
@@ -248,7 +248,7 @@ func (d *Driver) DriverName() string {
 }
 
 func (d *Driver) SetConfigFromFlags(flags drivers.DriverOptions) error {
-	d.Userid = flags.String("pb-user")
+	d.User = flags.String("pb-user")
 	d.Password = flags.String("pb-password")
 	d.VDCName = flags.String("pb-vdc-name")
 	d.StorageSize = flags.String("pb-storagesizeGB")
@@ -271,7 +271,7 @@ func (d *Driver) Create() error {
 	if err != nil {
 		return err
 	}
-	log.Infof("UserID ---- %v", d)
+	log.Infof("User ---- %v", d)
 	//Get vdc ID from name
 	log.Infof("%s", d.VDCName)
 	log.Debugf("%+v", key)	
@@ -285,7 +285,7 @@ func (d *Driver) Create() error {
 					</ws:getAllDataCenters>
 					</soapenv:Body>
 					</soapenv:Envelope>`
-	s := makeReq(soapreq_str, d.Userid, d.Password)
+	s := makeReq(soapreq_str, d.User, d.Password)
 	if s == ""{
 		log.Debugf("Error Happened while getting VDC-------------------")
 		log.Debugf(s)
@@ -328,7 +328,7 @@ func (d *Driver) Create() error {
 					</soapenv:Envelope>`
 	
 	soapreq_str = fmt.Sprintf(soapreq_str, d.StorageSize, vdcId)
-	s = makeReq(soapreq_str, d.Userid, d.Password)
+	s = makeReq(soapreq_str, d.User, d.Password)
 	if s == ""{
 		log.Errorf("Error Happened while creting the storage-----------------")
 		log.Debugf(s)
@@ -382,7 +382,7 @@ func (d *Driver) Create() error {
 					</soapenv:Body>
 					</soapenv:Envelope>`
 	soapreq_str = fmt.Sprintf(soapreq_str, d.Cores, t, vdcId, v.RespBody.StrgRet.Ret.StorageId, d.MachineName)
-	s = makeReq(soapreq_str, d.Userid, d.Password)
+	s = makeReq(soapreq_str, d.User, d.Password)
 	//fmt.Printf("%s", s)
 	v1 := ServerResponse{}
     err = xml.Unmarshal([]byte(s), &v1)
@@ -411,7 +411,7 @@ func (d *Driver) Create() error {
 						</soapenv:Body>
 						</soapenv:Envelope>`
 		soapreq_str = fmt.Sprintf(soapreq_str, v1.RespBody.ServerRet.Ret.ServerId)
-		s = makeReq(soapreq_str, d.Userid, d.Password)
+		s = makeReq(soapreq_str, d.User, d.Password)
 		v2 := GetServerResponse{}
 		err = xml.Unmarshal([]byte(s), &v2)
 		if err != nil {
