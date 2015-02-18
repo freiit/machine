@@ -437,16 +437,16 @@ func (d *Driver) Create() error {
 	DockerImage := "freiit/dockerize"
 	cmd := exec.Command("docker", "run", "-e", IPCommand, "-e", Passcommand, DockerImage)
 	var out bytes.Buffer
-	cmd.Stdout = &out
+	//cmd.Stdout = &out
 	err = cmd.Run()
 	if err != nil {
 		log.Infof("Error running docker command")
 		log.Errorf("%v", err.Error())
 		return err
 	}
-	log.Infof("******************* OUTPUT *******************")
-	log.Infof("%q\n", out.String())
-	log.Infof("******************* OUTPUT *******************")
+	// log.Infof("******************* OUTPUT *******************")
+	// log.Infof("%q\n", out.String())
+	// log.Infof("******************* OUTPUT *******************")
 	//cmd := exec.Command("ssh-keygen", "-t", "rsa", "-b 4096", DockerImage)
 	return nil
 }
