@@ -274,7 +274,7 @@ func (d *Driver) Create() error {
 	//Get vdc ID from name
 	log.Infof("%s", d.VDCName)
 	log.Debugf(" ssssssssssssssss -------------- %+v", key)	
-	return
+	return nil
 
 	soapreq_str := `<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:ws="http://ws.api.profitbricks.com/">
 					<soapenv:Header>
