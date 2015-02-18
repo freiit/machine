@@ -72,6 +72,7 @@ func GetCreateFlags() []cli.Flag {
 	// 		Value:  "512mb",
 	// 	},
 	// }
+	return []cli.Flag{}
 }
 
 func NewDriver(machineName string, storePath string, caCert string, privateKey string) (drivers.Driver, error) {
