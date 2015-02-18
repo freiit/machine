@@ -206,27 +206,34 @@ func init() {
 func GetCreateFlags() []cli.Flag {
 	return []cli.Flag{
 		cli.StringFlag{
-			EnvVar: "DIGITALOCEAN_ACCESS_TOKEN",
-			Name:   "digitalocean-access-token",
-			Usage:  "Digital Ocean access token",
+			EnvVar: "PB_USER",
+			Name:   "pb-user",
+			Usage:  "Profiitbricks user id",
 		},
 		cli.StringFlag{
-			EnvVar: "DIGITALOCEAN_IMAGE",
-			Name:   "digitalocean-image",
-			Usage:  "Digital Ocean Image",
-			Value:  "ubuntu-14-04-x64",
+			EnvVar: "PB_PASSWD",
+			Name:   "pb-password",
+			Usage:  "Profitbricks password",
 		},
 		cli.StringFlag{
-			EnvVar: "DIGITALOCEAN_REGION",
-			Name:   "digitalocean-region",
-			Usage:  "Digital Ocean region",
-			Value:  "nyc3",
+			EnvVar: "PB_DCNAME",
+			Name: "pb-vdc-name",
+			Usage: "Profitbicks data centre name",
 		},
 		cli.StringFlag{
-			EnvVar: "DIGITALOCEAN_SIZE",
-			Name:   "digitalocean-size",
-			Usage:  "Digital Ocean size",
-			Value:  "512mb",
+			EnvVar: "PB_STORAGE",
+			Name:   "pb-storagesizeGB",
+			Usage: "Profitbricks Virtual Server storage space size",
+		},
+		cli.StringFlag{
+			EnvVar: "PB_CORES",
+			Name:   "pb-cores",
+			Usage: "Profitbricks Virtual Server compute cores",
+		},
+		cli.StringFlag{
+			EnvVar: "PB_RAM",
+			Name:   "pb-ramGB",
+			Usage: "Profitbricks Virtual Server RAM size",
 		},
 	}
 }
@@ -240,13 +247,13 @@ func (d *Driver) DriverName() string {
 }
 
 func (d *Driver) SetConfigFromFlags(flags drivers.DriverOptions) error {
-	//log.Infof("Called %v", flags)
-	d.User = flags.String("digitalocean-access-token")
-	d.Password = flags.String("digitalocean-image")
-	// d.VDCName = flags.String("pb-vdc-name")
-	// d.StorageSize = flags.String("pb-storagesizeGB")
-	// d.Cores = flags.String("pb-cores")
-	// d.RamSize = flags.String("pb-ramGB")
+	log.Infof("Called %v", flags)
+	d.User = flags.String("pb-user")
+	d.Password = flags.String("pb-password")
+	d.VDCName = flags.String("pb-vdc-name")
+	d.StorageSize = flags.String("pb-storagesizeGB")
+	d.Cores = flags.String("pb-cores")
+	d.RamSize = flags.String("pb-ramGB")
 	log.Infof("End %+v ", d)
 	return nil
 }
