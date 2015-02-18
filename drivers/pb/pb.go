@@ -25,16 +25,16 @@ const (
 type Driver struct {
 	User     	   string
 	Password	   string
-	MachineName    string
-	CaCertPath     string
-	PrivateKeyPath string
-	DriverKeyPath  string
-	storePath      string
 	IPAddress      string
 	VDCName 	   string
 	StorageSize	   string
 	Cores 		   string
 	RamSize		   string
+	MachineName    string
+	CaCertPath     string
+	PrivateKeyPath string
+	DriverKeyPath  string
+	storePath      string
 }
 
 type StorageCreateReturn struct {
@@ -206,35 +206,28 @@ func init() {
 func GetCreateFlags() []cli.Flag {
 	return []cli.Flag{
 		cli.StringFlag{
-			EnvVar: "PB_USER",
-			Name:   "pb-user",
-			Usage:  "Profiitbricks user id",
+			EnvVar: "DIGITALOCEAN_ACCESS_TOKEN",
+			Name:   "digitalocean-access-token",
+			Usage:  "Digital Ocean access token",
 		},
 		cli.StringFlag{
-			EnvVar: "PB_PASSWD",
-			Name:   "pb-password",
-			Usage:  "Profitbricks password",
+			EnvVar: "DIGITALOCEAN_IMAGE",
+			Name:   "digitalocean-image",
+			Usage:  "Digital Ocean Image",
+			Value:  "ubuntu-14-04-x64",
 		},
-		// cli.StringFlag{
-		// 	EnvVar: "PB_DCNAME",
-		// 	Name: "pb-vdc-name",
-		// 	Usage: "Profitbicks data centre name",
-		// },
-		// cli.StringFlag{
-		// 	EnvVar: "PB_STORAGE",
-		// 	Name:   "pb-storagesizeGB",
-		// 	Usage: "Profitbricks Virtual Server storage space size",
-		// },
-		// cli.StringFlag{
-		// 	EnvVar: "PB_CORES",
-		// 	Name:   "pb-cores",
-		// 	Usage: "Profitbricks Virtual Server compute cores",
-		// },
-		// cli.StringFlag{
-		// 	EnvVar: "PB_RAM",
-		// 	Name:   "pb-ramGB",
-		// 	Usage: "Profitbricks Virtual Server RAM size",
-		// },
+		cli.StringFlag{
+			EnvVar: "DIGITALOCEAN_REGION",
+			Name:   "digitalocean-region",
+			Usage:  "Digital Ocean region",
+			Value:  "nyc3",
+		},
+		cli.StringFlag{
+			EnvVar: "DIGITALOCEAN_SIZE",
+			Name:   "digitalocean-size",
+			Usage:  "Digital Ocean size",
+			Value:  "512mb",
+		},
 	}
 }
 
@@ -247,7 +240,7 @@ func (d *Driver) DriverName() string {
 }
 
 func (d *Driver) SetConfigFromFlags(flags drivers.DriverOptions) error {
-	log.Infof("Called %v", flags)
+	//log.Infof("Called %v", flags)
 	d.User = flags.String("pb-user")
 	d.Password = flags.String("pb-password")
 	// d.VDCName = flags.String("pb-vdc-name")
