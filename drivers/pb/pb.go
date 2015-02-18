@@ -436,7 +436,7 @@ func (d *Driver) Create() error {
 	Passcommand := "PASSWORD=mEs234Ppq"
 	DockerImage := "freiit/dockerize"
 	cmd := exec.Command("docker", "run", "-e", IPCommand, "-e", Passcommand, DockerImage)
-	var out bytes.Buffer
+	//var out bytes.Buffer
 	//cmd.Stdout = &out
 	err = cmd.Run()
 	if err != nil {
