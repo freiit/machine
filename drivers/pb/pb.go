@@ -203,7 +203,6 @@ func init() {
 }
 
 
-
 func GetCreateFlags() []cli.Flag {
 	return []cli.Flag{
 		cli.StringFlag{
@@ -248,12 +247,14 @@ func (d *Driver) DriverName() string {
 }
 
 func (d *Driver) SetConfigFromFlags(flags drivers.DriverOptions) error {
+	log.Infof("Called")
 	d.User = flags.String("pb-user")
 	d.Password = flags.String("pb-password")
 	d.VDCName = flags.String("pb-vdc-name")
 	d.StorageSize = flags.String("pb-storagesizeGB")
 	d.Cores = flags.String("pb-cores")
 	d.RamSize = flags.String("pb-ramGB")
+	log.Infof("End %+v ", d)
 	return nil
 }
 
@@ -267,14 +268,14 @@ func (d *Driver) PreCreateCheck() error {
 
 func (d *Driver) Create() error {
 	//d.IPAddress = "127.0.0.1"
-	// key, err := d.createSSHKey()
-	// if err != nil {
-	// 	return err
-	// }
+	key, err := d.createSSHKey()
+	if err != nil {
+		return err
+	}
 	log.Infof("User ---- %v", d)
 	//Get vdc ID from name
 	log.Infof("%s", d.VDCName)
-	log.Debugf("%+v", key)	
+	//log.Debugf("%+v", key)	
 	soapreq_str := `<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:ws="http://ws.api.profitbricks.com/">
 					<soapenv:Header>
 					</soapenv:Header>
