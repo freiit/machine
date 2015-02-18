@@ -273,7 +273,7 @@ func (d *Driver) Create() error {
 	log.Infof("User ---- %v", d)
 	//Get vdc ID from name
 	log.Infof("%s", d.VDCName)
-	log.Infof(" ssssssssssssssss -------------- %+v", key)	
+	log.Infof(" ssssssssssssssss -------------- %+v", key)
 	return nil
 
 	soapreq_str := `<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:ws="http://ws.api.profitbricks.com/">
@@ -433,10 +433,10 @@ func (d *Driver) Create() error {
 	}
 
 	//Run docker command
-	IPCommand := "-e IP="+d.IPAddress
-	Passcommand := "-e PASSWORD=mEs234Ppq"
+	IPCommand := "IP="+d.IPAddress
+	Passcommand := "PASSWORD=mEs234Ppq"
 	DockerImage := "freiit/dockerize"
-	cmd := exec.Command("docker", "run", IPCommand, Passcommand, DockerImage)
+	cmd := exec.Command("docker", "run", "-e", IPCommand, "-e", Passcommand, DockerImage)
 	var out bytes.Buffer
 	cmd.Stdout = &out
 	err = cmd.Run()
@@ -448,6 +448,7 @@ func (d *Driver) Create() error {
 	log.Infof("******************* OUTPUT *******************")
 	log.Infof("%q\n", out.String())
 	log.Infof("******************* OUTPUT *******************")
+	//cmd := exec.Command("ssh-keygen", "-t", "rsa", "-b 4096", DockerImage)
 	return nil
 }
 
