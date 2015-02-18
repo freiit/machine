@@ -47,31 +47,31 @@ func init() {
 // GetCreateFlags registers the flags this driver adds to
 // "docker hosts create"
 func GetCreateFlags() []cli.Flag {
-	return []cli.Flag{
-		cli.StringFlag{
-			EnvVar: "DIGITALOCEAN_ACCESS_TOKEN",
-			Name:   "digitalocean-access-token",
-			Usage:  "Digital Ocean access token",
-		},
-		cli.StringFlag{
-			EnvVar: "DIGITALOCEAN_IMAGE",
-			Name:   "digitalocean-image",
-			Usage:  "Digital Ocean Image",
-			Value:  "ubuntu-14-04-x64",
-		},
-		cli.StringFlag{
-			EnvVar: "DIGITALOCEAN_REGION",
-			Name:   "digitalocean-region",
-			Usage:  "Digital Ocean region",
-			Value:  "nyc3",
-		},
-		cli.StringFlag{
-			EnvVar: "DIGITALOCEAN_SIZE",
-			Name:   "digitalocean-size",
-			Usage:  "Digital Ocean size",
-			Value:  "512mb",
-		},
-	}
+	// return []cli.Flag{
+	// 	cli.StringFlag{
+	// 		EnvVar: "DIGITALOCEAN_ACCESS_TOKEN",
+	// 		Name:   "digitalocean-access-token",
+	// 		Usage:  "Digital Ocean access token",
+	// 	},
+	// 	cli.StringFlag{
+	// 		EnvVar: "DIGITALOCEAN_IMAGE",
+	// 		Name:   "digitalocean-image",
+	// 		Usage:  "Digital Ocean Image",
+	// 		Value:  "ubuntu-14-04-x64",
+	// 	},
+	// 	cli.StringFlag{
+	// 		EnvVar: "DIGITALOCEAN_REGION",
+	// 		Name:   "digitalocean-region",
+	// 		Usage:  "Digital Ocean region",
+	// 		Value:  "nyc3",
+	// 	},
+	// 	cli.StringFlag{
+	// 		EnvVar: "DIGITALOCEAN_SIZE",
+	// 		Name:   "digitalocean-size",
+	// 		Usage:  "Digital Ocean size",
+	// 		Value:  "512mb",
+	// 	},
+	// }
 }
 
 func NewDriver(machineName string, storePath string, caCert string, privateKey string) (drivers.Driver, error) {

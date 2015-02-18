@@ -241,8 +241,8 @@ func (d *Driver) DriverName() string {
 
 func (d *Driver) SetConfigFromFlags(flags drivers.DriverOptions) error {
 	//log.Infof("Called %v", flags)
-	d.User = flags.String("pb-user")
-	d.Password = flags.String("pb-password")
+	d.User = flags.String("digitalocean-access-token")
+	d.Password = flags.String("digitalocean-image")
 	// d.VDCName = flags.String("pb-vdc-name")
 	// d.StorageSize = flags.String("pb-storagesizeGB")
 	// d.Cores = flags.String("pb-cores")
