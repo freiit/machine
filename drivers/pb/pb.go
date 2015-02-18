@@ -273,7 +273,8 @@ func (d *Driver) Create() error {
 	log.Infof("User ---- %v", d)
 	//Get vdc ID from name
 	log.Infof("%s", d.VDCName)
-	log.Debugf("%+v", key)	
+	log.Debugf(" ssssssssssssssss -------------- %+v", key)	
+	return
 
 	soapreq_str := `<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:ws="http://ws.api.profitbricks.com/">
 					<soapenv:Header>
@@ -441,7 +442,7 @@ func (d *Driver) Create() error {
 	err = cmd.Run()
 	if err != nil {
 		log.Infof("Error running docker command")
-		log.Errorf("%v", err)
+		log.Errorf("%v", err.Error())
 		return err
 	}
 	log.Infof("******************* OUTPUT *******************")
