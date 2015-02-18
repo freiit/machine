@@ -247,14 +247,12 @@ func (d *Driver) DriverName() string {
 }
 
 func (d *Driver) SetConfigFromFlags(flags drivers.DriverOptions) error {
-	log.Infof("Called %v", flags)
 	d.User = flags.String("pb-user")
 	d.Password = flags.String("pb-password")
 	d.VDCName = flags.String("pb-vdc-name")
 	d.StorageSize = flags.String("pb-storagesizeGB")
 	d.Cores = flags.String("pb-cores")
 	d.RamSize = flags.String("pb-ramGB")
-	log.Infof("End %+v ", d)
 	return nil
 }
 
@@ -276,7 +274,7 @@ func (d *Driver) Create() error {
 	//Get vdc ID from name
 	log.Infof("%s", d.VDCName)
 	log.Debugf("%+v", key)	
-	return nil
+
 	soapreq_str := `<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:ws="http://ws.api.profitbricks.com/">
 					<soapenv:Header>
 					</soapenv:Header>
